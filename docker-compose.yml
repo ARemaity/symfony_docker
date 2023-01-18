@@ -1,4 +1,4 @@
-version: "1.0"
+version: "1.1"
 
 services:
   fpm:
@@ -21,6 +21,14 @@ services:
       - 10302:80 # Ports that are exposed, you can connect to port 8001 to port 80 of the container.
     networks:
       - symfony
+  rabbitmq:
+    image: rabbitmq:3.8.5-management
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    networks:
+      - symfony
+
   db: #address
     image: mariadb:10.2.29
     ports:
